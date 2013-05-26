@@ -2,7 +2,7 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" ng-app="sms-service"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -25,28 +25,19 @@
         <!-- Add your site or application content here -->
         <nav>
             <menu>
-                <li><a href="#">Messages</a></li>
-                <li class="subitem"><a href="#">-Sent</a></li>
-                <li class="subitem"><a href="#">-Pending</a></li>
-                <li class="subitem"><a href="#">-Recurring</a></li>
-                <li><a href="#">Subscribers</a></li>
-                <li class="subitem"><a href="#">-Group 1</a></li>
-                <li class="subitem"><a href="#">-Group 2</a></li>
-                <li><a href="#">Analytics</a></li>
+                <li><a href="#/messages">Messages</a></li>
+                <li class="subitem"><a href="#/messages/pending">Pending</a></li>
+                <li class="subitem"><a href="#/messages/sent">Sent</a></li>
+                <li><a href="#/subscribers">Subscribers</a></li>
+                <li class="subitem"><a href="#">Group 1</a></li>
+                <li class="subitem"><a href="#">Group 2</a></li>
+                <li><a href="#/analytics">Analytics</a></li>
             </menu>
         </nav>
-        <section id="main">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras consectetur tincidunt tortor eu interdum. Praesent tincidunt justo quis quam ultricies ac blandit velit molestie. Morbi vitae magna quam. Curabitur vitae nisi a lacus varius tempor vel at sapien. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam arcu est, varius sed sagittis sit amet, euismod ac nisl. Sed a fermentum mi. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce in elementum enim. Aliquam nec massa lacus, nec commodo tellus. Pellentesque nec dui felis, in vulputate metus. In ac elit est.</p>
-
-            <p>Aliquam nisi erat, vestibulum sit amet ornare et, commodo id enim. Etiam augue nulla, malesuada id faucibus non, malesuada id tellus. Nam pellentesque augue ac velit ullamcorper at facilisis mi condimentum. Pellentesque sed ante in neque interdum scelerisque vel at turpis. Suspendisse sit amet nisi ut mauris congue malesuada sit amet congue lectus. Vestibulum at eros eget augue tristique suscipit a nec nisi. Donec sollicitudin condimentum lectus, et imperdiet nisi posuere eget. Etiam ante ipsum, sodales et dapibus eget, ultrices in sapien.</p>
-
-            <p>Fusce elit ipsum, faucibus ac adipiscing sit amet, convallis in purus. Cras aliquam nisi at felis tempus vel dignissim est ultricies. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris in ligula quam. Duis et neque mi, vel imperdiet ligula. Pellentesque non purus a erat tincidunt consequat quis at purus. Sed gravida consectetur velit at dignissim. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In fermentum quam in odio rhoncus sed dapibus massa dapibus. Sed sit amet leo ut massa vulputate bibendum. Mauris viverra lectus ac ligula consequat facilisis commodo dui aliquam. Morbi eget ornare neque. Quisque consectetur pharetra ante, vitae suscipit magna mattis quis. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed interdum imperdiet massa, et porta eros mattis viverra. In at velit id ipsum elementum faucibus.</p>
-
-            <p>Phasellus semper sollicitudin pharetra. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Cras sollicitudin faucibus eros sit amet consequat. Aliquam id dui nec nulla tristique ultricies. Etiam eros lectus, sodales eu sollicitudin quis, consequat at leo. Nullam placerat laoreet tempus. Quisque consequat suscipit nulla, eget pellentesque odio rhoncus in.</p>
-
-            <p>Nunc tortor nisi, tincidunt id volutpat laoreet, interdum quis magna. Quisque massa nulla, vehicula a vulputate sit amet, molestie quis mi. Praesent placerat ultrices metus nec pharetra. Proin dolor arcu, ultricies vel hendrerit ut, imperdiet ac justo. Praesent varius lobortis dolor. Mauris sit amet risus sapien, vitae imperdiet odio. Cras augue libero, faucibus vel scelerisque non, adipiscing eu sem. Nulla rutrum volutpat diam sit amet ultrices. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce pulvinar ullamcorper fermentum.</p>
+        <section id="main" ng-view>
+            
         </section>
-        <script src="js/plugins.js"></script>
+        <script src="js/vendor/angular.js"></script>
         <script src="js/main.js"></script>
 
     </body>

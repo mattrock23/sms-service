@@ -122,6 +122,8 @@ nav li.subitem {
     border-bottom: none;
     background-color: #F9F9F9;
     background-image: none;
+    font-size: .9em;
+    padding-left: 20px;
 }
 
 nav li.subitem:hover {
@@ -149,7 +151,6 @@ menu {
 }
 
 #main {
-    float:left;
     margin-left: 130px;
     padding: 15px;
 }
@@ -161,14 +162,26 @@ menu {
     box-shadow: 0 1px 0 0 #f7f7f7,0 5px 4px -4px #d8d8d8;
 }
 
+#main table {
+    box-shadow: 0 1px 0 0 #f7f7f7,0 5px 4px -4px #d8d8d8;
+    font-size: .8em;
+    width: 100%;
+    min-width: 600px;
+    margin-bottom: 10px;
+}
 
+#main table td {
+    border: 1px solid #D8D8D8;
+    padding: 5px;
+}
 
-
-
-
-
-
-
+textarea {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    border-color: #c7c7c7;
+}
 
 
 

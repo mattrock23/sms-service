@@ -1,0 +1,20 @@
+<span>Message List : {{ type }}</span>
+
+<table>
+	<tr ng-repeat="message in messageList">
+		<td class="checkbox"><input type="checkbox"></td>
+		<td>{{message.recipients}}</td>
+		<td>{{message.content}}</td>
+		<td>{{message.date | date:'short'}}</td>
+	</tr>
+</table>
+
+<span>New Message</span>
+<table>
+	<tr>
+		<td><select><option>Group 1</option></select></td>
+		<td><textarea></textarea></td>
+		<td>Datepicker</td>
+		<td><input type="button" value="Schedule"></td>
+	</tr>
+</table>
