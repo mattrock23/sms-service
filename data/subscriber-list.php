@@ -2,34 +2,30 @@
 
 require("config.php");
 
-if ($_GET['type']) {
-	$type = $_GET['type'];
+if ($_GET['groupName']) {
+	$groupName = $_GET['groupName'];
 }
-function pending($date) {
-	if (strtotime($date) <= time()) {
-		return true;
-	}
-}
-function sent($date) {
-	if (strtotime($date) > time()) {
-		return true;
-	}
-}
-// Whatever results this gets, it hast to filter based on $type
-// type will say pending, sent, or all
+
 $link = mysql_connect(DBSERV, DBUSER, DBPASS);
 mysql_select_db(DBNAME, $link);
-$query = "SELECT * FROM messages";
+if ($groupName) {
+	$query = "SELECT s.subscriber_name, s.phone_number, s.subscribed, s.unsubscribed 
+	FROM subscribers s, group_membership m, group_names g 
+	WHERE m.subscriber_id = s.subscriber_id AND m.group_id = g.group_id 
+	AND g.group_name = '$groupName'";
+} else {
+	$query = "SELECT * FROM subscribers";
+}
 $result = mysql_query($query) or die(mysql_error());
 $json = "[";
 while($row = mysql_fetch_array($result)) {
-	if ($type && $type($row['date'])) {
+	if (preg_match('/[1-9]/', $row['unsubscribed']) === 1) {
 		continue;
 	}
-	$date = date("M j, Y g:i A", strtotime($row['date']));
+	$date = date("M j, Y g:i A", strtotime($row['subscribed']));
 	$json .= "{";
-	$json .= "\"recipients\": \"" . $row['recipients'] . "\", ";
-	$json .= "\"content\": \"" . $row['content'] . "\", ";
+	$json .= "\"name\": \"" . $row['subscriber_name'] . "\", ";
+	$json .= "\"phone\": \"" . $row['phone_number'] . "\", ";
 	$json .= "\"date\": \"" . $date . "\"";
 	$json .= "},";
 }

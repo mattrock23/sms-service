@@ -1,1 +1,16 @@
-Subscribers
+<span>Subscribers</span>
+
+<table>
+	<tr>
+		<td class="checkbox"></td>
+		<td>Name</td>
+		<td>Phone Number</td>
+		<td>Subscribed Date</td>
+	</tr>
+	<tr ng-repeat="subscriber in subscriberList | orderBy:dateSorter">
+		<td class="checkbox"><input type="checkbox"></td>
+		<td>{{subscriber.name}}</td>
+		<td>{{subscriber.phone}}</td>
+		<td>{{subscriber.date}}</td>
+	</tr>
+</table>

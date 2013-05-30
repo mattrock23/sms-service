@@ -1,11 +1,11 @@
 <span>Message List : {{ type }}</span>
 
 <table>
-	<tr ng-repeat="message in messageList">
+	<tr ng-repeat="message in messageList | orderBy:dateSorter">
 		<td class="checkbox"><input type="checkbox"></td>
 		<td>{{message.recipients}}</td>
 		<td>{{message.content}}</td>
-		<td>{{message.date | date:'short'}}</td>
+		<td>{{message.date}}</td>
 	</tr>
 </table>
 
