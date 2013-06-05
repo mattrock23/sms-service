@@ -42,9 +42,9 @@ $groupNames = getGroupNames();
         <section id="main" ng-view>
             
         </section>
+        <script src="js/vendor/jquery-1.9.1.min.js"></script>
         <script src="js/vendor/angular.js"></script>
         <script src="js/main.js"></script>
-        <script src="js/vendor/jquery-1.9.1.min.js"></script>
         <script src="js/vendor/jcanvas.min.js"></script>
         <script src="js/graph.js"></script>
 

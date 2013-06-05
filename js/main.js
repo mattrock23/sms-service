@@ -2,11 +2,11 @@
 
 /* App Module */
 
-angular.module('sms-service', []).
+var smsApp = angular.module('sms-service', []).
   config(['$routeProvider', function($routeProvider) {
   $routeProvider
-      .when('/messages', {templateUrl: 'partials/message-list.html',   controller: MessageListCtrl})
-      .when('/messages/:type', {templateUrl: 'partials/message-list.html',   controller: MessageListCtrl})
+      .when('/messages', {templateUrl: 'partials/message-list.php', controller: MessageListCtrl})
+      .when('/messages/:type', {templateUrl: 'partials/message-list.php', controller: MessageListCtrl})
       .when('/subscribers', {templateUrl: 'partials/subscriber-list.html', controller: SubscriberListCtrl})
       .when('/subscribers/:groupName', {templateUrl: 'partials/subscriber-list.html', controller: SubscriberListCtrl})
       .when('/analytics', {templateUrl: 'partials/analytics.html', controller: AnalyticsCtrl})
@@ -16,7 +16,7 @@ angular.module('sms-service', []).
 /* Controllers */
 
 function MessageListCtrl($scope, $http, $routeParams) {
-  var getVar = 'data/message-list.php';
+  var getVar = 'data/message-list-data.php';
   if($routeParams.type) {
     getVar += '?type=' + $routeParams.type;
     $scope.type = capitalizeFirstLetter($routeParams.type);
@@ -30,10 +30,18 @@ function MessageListCtrl($scope, $http, $routeParams) {
     var newDate = new Date(message.date);
     return newDate.toISOString();
   }
+  $scope.formSubmit = function() {
+    $http.get('data/addMessage.php?recipients=' + $scope.recipients + '&content=' + $scope.content + '&datetime=' + $scope.datetime)
+      .success(function(data) {
+      $http.get(getVar).success(function(data) {
+        $scope.messageList = data;
+      });
+    });
+  }
 }
 
 function SubscriberListCtrl($scope, $http, $routeParams) {
-  var getVar = 'data/subscriber-list.php';
+  var getVar = 'data/subscriber-list-data.php';
   if($routeParams.groupName) {
     getVar += '?groupName=' + $routeParams.groupName;
     $scope.groupName = capitalizeFirstLetter($routeParams.groupName);
@@ -48,7 +56,7 @@ function SubscriberListCtrl($scope, $http, $routeParams) {
 }
 
 function AnalyticsCtrl($scope, $http) {
-  $http.get('data/analytics.php').success(function(d) {
+  $http.get('data/analytics-data.php').success(function(d) {
     graph(jQuery, preparePlotPoints(d));
   });
 }

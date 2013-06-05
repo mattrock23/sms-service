@@ -176,6 +176,14 @@ menu {
     padding: 5px;
 }
 
+#main table td.inputbox {
+    width: 175px;
+}
+
+#main table td.buttonbox {
+    width: 100px;
+}
+
 textarea {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
